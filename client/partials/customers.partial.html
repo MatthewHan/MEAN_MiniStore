@@ -1,0 +1,36 @@
+<h2>Customer Dashboard</h2>
+<p ng-bind='customersCtrl.errormessage'></p>
+  <h3>Add a new customer!</h3>
+  <div class="row margin-0 list-header hidden-sm hidden-xs">
+      <div class = 'col-md-8'>
+          <div ng-repeat="error in customersCtrl.errors">
+            <p ng-bind="error"></p>
+          </div>
+         	Name: <input type='text' ng-model='customersCtrl.newCustomer.name' />
+         	<button class='btn btn-info btn-sm' ng-click='customersCtrl.addCustomer(customersCtrl.newCustomer)'>Add New Customer</button>
+
+      </div>
+      <input class = 'col-md-2 pull-right'type="text" ng-model="customersCtrl.searchWord.name" placeholder="Filter By Name">
+      <br><br>
+  </div>
+  <div class="row margin-0 list-header hidden-sm hidden-xs">
+      <div class="col-md-5"><div class="header">Name</div></div>
+      <div class="col-md-5"><div class="header">Created Date</div></div>
+	<div class="col-md-2"><div class="header">Actions</div></div>
+  </div>
+  <div class="row margin-0" ng-repeat='customer in customersCtrl.customers | filter:customersCtrl.searchWord' >
+      <div class="col-md-5">
+         	<div class="cell" ng-bind='customer.name'>
+         	</div>
+      </div>
+      <div class="col-md-5">
+         	<div class="cell" ng-bind="customer.created_at | date:'medium' ">
+         	</div>
+      </div>
+      <div class="col-md-2">
+         	<div class="cell">
+            	<button class = 'btn btn-danger btn-sm' ng-click = 'customersCtrl.removeCustomer(customer)'>Remove</button>
+         	</div>
+      </div>
+      <br><br>
+  </div>

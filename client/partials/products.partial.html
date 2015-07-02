@@ -1,0 +1,32 @@
+<h3>Add a product</h3>
+<div class="row margin-0  hidden-sm hidden-xs">
+	<div class = 'col-md-3' >
+		<form>
+	   		<div class='form-group'>
+	   			<input class = 'form-control' name ='name' type="text" placeholder = 'Product Name' ng-model='productsCtrl.newProduct.name'>
+	   		</div>
+	   		<div class="form-group">
+	   			<input class = 'form-control' name ='imageurl' type="text" placeholder = 'Product Image(URL)' ng-model='productsCtrl.newProduct.imageurl'>
+	   		</div>
+	   		<div class="form-group">
+	   			<textarea class='form-control' name="description" cols="20" rows="5" placeholder = 'Product Description' ng-model='productsCtrl.newProduct.description'></textarea>
+	   		</div>
+	   		<div class="form-group">
+	   			<label for='quantity'>Initial Quantity: </label><select name = "quantity" class = 'form-control' type='text' ng-model='productsCtrl.newProduct.quantity' ng-init="productsCtrl.newProduct.quantity = '1'"><option ng-repeat = "n in [] | range:100" value = "{{n}}">{{n}}</option></select>
+	   		</div>
+	   		<button class='btn btn-info btn-sm center-block' ng-click='productsCtrl.addProduct(productsCtrl.newProduct)'>Create</button>
+   		</form>
+	</div>
+	<div class = 'col-md-9'>
+		<div class="col-md-3" ng-repeat = 'product in productsCtrl.products'>
+          <div class="thumbnail">
+            <img src="{{product.imageurl}}" class = 'img-responsive'>
+              <div class="caption">
+                <h5 ng-bind = 'product.name'></h5>
+                <p>(<span ng-bind = 'product.quantity'></span> Remaining)</p>
+            </div>
+          </div>
+        </div>
+	</div>
+</div>
+

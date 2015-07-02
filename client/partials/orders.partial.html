@@ -1,0 +1,35 @@
+
+<h3>Add an order</h3>
+<div class="row margin-0 list-header hidden-sm hidden-xs">
+	<div class = 'col-md-8' >
+   		Customer: <select name = "customer" type='text' ng-model='ordersCtrl.newOrder.name' ng-options="customer.name as customer.name for customer in ordersCtrl.customers"></select>
+   		Quantity: <select name = "quantity" type='text' ng-model='ordersCtrl.newOrder.quantity' ng-init="ordersCtrl.newOrder.quantity = '1'"><option ng-repeat = "n in [] | range:10" value = "{{n}}">{{n}}</option></select>
+   		Product: <select name = "product" type='text' ng-model='ordersCtrl.newOrder.product' ng-options="product.name as product.name for product in ordersCtrl.products"></select>
+   		<button class='btn btn-info btn-sm' ng-click='ordersCtrl.addOrder(ordersCtrl.newOrder)'>Order</button>
+	</div>
+</div>
+<div class="row margin-0 list-header hidden-sm hidden-xs">
+	<div class="col-md-4"><div class="header">Customer Name</div></div>
+	<div class="col-md-3"><div class="header">Product</div></div>
+	<div class="col-md-2"><div class="header">Quantity</div></div>
+	<div class="col-md-3"><div class="header">Date</div></div>
+</div>
+<div class="row margin-0" ng-repeat='order in ordersCtrl.orders' >
+	<div class="col-md-4">
+	   <div class="cell" ng-bind='order.customer_name'>
+	   </div>
+	</div>
+	<div class="col-md-3">
+	   <div class="cell" ng-bind='order.product'>
+	   </div>
+	</div>
+	<div class="col-md-2">
+	   <div class="cell" ng-bind='order.quantity'>
+	   </div>
+	</div>
+	<div class="col-md-3">
+	   <div class="cell" ng-bind="order.created_at | date: 'medium' ">
+	   </div>
+	</div>
+	<br><br>
+</div>
