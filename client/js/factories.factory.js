@@ -33,13 +33,16 @@ app.factory('CustomersFactory', function($http){
 		},
 		addOrder: function(newOrder, callback){
 			//console.log("OrdersFactory addOrder ", newOrder);
-			$http.post('/orders', newOrder).success(function(res){
-				callback(res);
+			$http.patch('/products', newOrder).success(function(res){
+				if(res.status == false){
+					console.log('FAILED TO PATCH PRODUCTS QUANTITY', res);
+					callback(res);
+				} else {
+					$http.post('/orders', newOrder).success(function(res){
+						callback(res);
+					})
+				}
 			})
-			$http.patch('/products', newOrder.quantity).success(function(res){
-				callback(res);
-			})
-
 		}
 	}
 })
