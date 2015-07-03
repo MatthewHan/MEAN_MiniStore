@@ -67,6 +67,7 @@ app.factory('CustomersFactory', function($http){
 .factory('HelperFactory', function(CustomersFactory, ProductsFactory){
 	var products = [];
 	var customers = [];
+	var orders = [];
 	return {
 		getCustomers: function(){
 			CustomersFactory.getCustomers(function(customers){

@@ -2,7 +2,7 @@ var Order = mongoose.model('Order');
 module.exports = (function(){
 	return {
 		index: function(req, res){
-			console.log("Server/Ctrl/Orders - Index");
+			//console.log("Server/Ctrl/Orders - Index");
 			Order.find({}, function (err, orders){
 				if(err){
 					res.json([{name: "Updating, come back later"}]);
@@ -25,7 +25,7 @@ module.exports = (function(){
 					console.log(err);
 					res.json({status:false});
 				} else {
-					console.log('created');
+					//console.log('created');
 					res.json({status:true});
 				}
 			})

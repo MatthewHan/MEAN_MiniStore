@@ -1,8 +1,10 @@
 {
   "name": "mean_customers_orders",
   "dependencies": {
-    "express": "latest",
+    "angular-moment": "^0.10.1",
     "body-parser": "latest",
+    "express": "latest",
+    "moment": "^2.10.3",
     "mongoose": "latest"
   }
 }

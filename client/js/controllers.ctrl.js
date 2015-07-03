@@ -35,7 +35,7 @@ app.controller('OrdersController', ['OrdersFactory','HelperFactory', function(Or
 		})
 	}
 	this.addOrder = function(newOrder){
-		if(newOrder){
+		if(newOrder.name && newOrder.quantity && newOrder.product){
 			OrdersFactory.addOrder(newOrder, function(){
 				getOrders();
 			})
