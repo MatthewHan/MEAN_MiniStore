@@ -3,6 +3,8 @@ var app = angular.module('app', ['ngRoute', 'angularMoment']);
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/', {
+		controller: 'DashboardsController',
+		controllerAs: 'dashboardsCtrl',
 		templateUrl: '/partials/dashboard.partial.html'
 	})
 	.when('/customers', {

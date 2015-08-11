@@ -46,7 +46,7 @@ app.controller('OrdersController', ['OrdersFactory','HelperFactory', function(Or
 }])
 
 app.controller('ProductsController', ['ProductsFactory', 'HelperFactory', function(ProductsFactory, HelperFactory){
-	console.log('ProductsController Loaded');
+	//console.log('ProductsController Loaded');
 	that = this;
 	this.products = HelperFactory.getProducts();
 	this.addProduct = function(newProduct){
@@ -59,4 +59,11 @@ app.controller('ProductsController', ['ProductsFactory', 'HelperFactory', functi
 		}
 	}
 
+}])
+
+app.controller('DashboardsController', ['HelperFactory', function(HelperFactory){
+	that = this;
+	that.orders = HelperFactory.getOrders();
+	that.products = HelperFactory.getProducts();
+	that.customers = HelperFactory.getCustomers();
 }])

@@ -1,4 +1,32 @@
-<h3>Welcome to the Dashboard!</h3>
-
-
+<h3>Store Dashboard</h3>
 <span am-time-ago="lastLoginTime"></span>
+<div class = 'col-md-3' >
+	<input ng-model="searchText" placeholder = "Filter">
+</div>
+<div class="container col-md-9">
+	<div class="col-md-12">
+		<h4>Products</h4>
+		<div class="col-md-3" ng-repeat = "product in dashboardsCtrl.products | limitTo: 4 | orderBy: '-created_at' | filter:searchText">
+	      	<div class="thumbnail">
+	        	<img src="{{product.imageurl}}" class = 'img-responsive'>
+	          		<div class="caption">
+	            		<h5 ng-bind = 'product.name'></h5>
+	            		<p>(<span ng-bind = 'product.quantity'></span> Remaining)</p>
+	        		</div>
+	      	</div>
+	    </div>
+	</div>
+	<div class="col-md-12">
+		<h4>Recent Orders</h4>
+		<div ng-repeat="order in dashboardsCtrl.orders | limitTo: 4 | orderBy: '-created_at'| filter:searchText" >
+			<span ng-bind = 'order.customer_name'></span> purchased <span ng-bind ='order.quantity'></span> <span ng-bind='order.product'></span>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<h4>New Customers</h4>
+		<div ng-repeat="customer in dashboardsCtrl.customers | limitTo: 4 | orderBy: '-created_at'| filter:searchText" >
+			<span ng-bind = 'customer.name'></span> joined the store.
+		</div>
+	</div>
+</div>
+

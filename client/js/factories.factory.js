@@ -64,7 +64,7 @@ app.factory('CustomersFactory', function($http){
 	}
 })
 
-.factory('HelperFactory', function(CustomersFactory, ProductsFactory){
+.factory('HelperFactory', function(CustomersFactory, ProductsFactory, OrdersFactory){
 	var products = [];
 	var customers = [];
 	var orders = [];
@@ -75,10 +75,14 @@ app.factory('CustomersFactory', function($http){
 			})
 		},
 		getProducts: function(){
-			console.log('HelperFactory getProducts');
 			ProductsFactory.getProducts(function(products){
 				that.products = products;
-				console.log('HelperFactory products', that.products);
+				//console.log('HelperFactory products', that.products);
+			})
+		},
+		getOrders: function(){
+			OrdersFactory.getOrders(function(orders){
+				that.orders = orders;
 			})
 		}
 	};
